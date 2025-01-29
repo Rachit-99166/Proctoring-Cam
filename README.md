@@ -31,3 +31,5 @@ All captured images are stored in the database and can be accessed only through 
 # Skills 
 
 Java, Spring Boot, Bootstrap, Opencv, Postman, Sql, and Manual Testing.
+
+![Image](https://github.com/user-attachments/assets/ca475823-a08a-46a3-871d-f40bd6d35fd2)
