@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proctoring Cam</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 900px;
+        }
+
+        /* White Text Color for Headers */
+        h1, .header h1 {
+            color: white;
+        }
+        .container {
+    margin-top: 1.5rem; /* Equivalent to mt-4 */
+}
+
+h1 {
+    text-align: center; /* Equivalent to text-center */
+    color: #6c757d; /* Equivalent to text-secondary (grey) */
+}
+
+
+        .capture-btns button {
+            margin: 5px;
+        }
+
+        .image-gallery img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Center the image (with smaller size) */
+        .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px; /* Reduced height for smaller image */
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #343a40;
+            color: white;
+            margin-top: 40px;
+        }
+
+        /* Header box */
+        .header {
+            background-color: #6c757d;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            margin: 0;
+        }
+
+        .header .mode-toggle {
+            background-color: transparent;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #343a40;
+            color: #f8f9fa;
+        }
+
+        .dark-mode .header {
+            background-color: #495057;
+        }
+
+        .dark-mode .footer {
+            background-color: #212529;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div class="header">
+        <h1>Proctoring Cam</h1>
+        <button class="mode-toggle" onclick="toggleMode()">🌙</button>
+    </div>
+
+    <!-- <div class="container mt-4">
+        <h1 class="text-center">Webcam Capture</h1> -->
+
+        <div class="container mt-4">
+            <h1 class="text-center text-secondary">Webcam Capture</h1>
+        </div>
+        
+
+        <!-- Capture buttons -->
+        <div class="text-center capture-btns">
+            <form action="/capture" method="post" class="d-inline">
+                <button type="submit" class="btn btn-success">Start Capturing</button>
+            </form>
+            <form action="/stop" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger">Stop Capturing</button>
+            </form>
+        </div>
+
+        <!-- Display the latest captured image centered -->
+        <div class="center-image mt-4">
+            <img th:src="'data:image/png;base64,' + ${imageData}" class="img-fluid" alt="Captured Image">
+        </div>
+
+        <!-- "Results" button that takes to another page showing all images -->
+        <div class="text-center mt-4">
+            <a href="/results" class="btn btn-primary">View All Images</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Proctoring Cam App. All rights reserved.</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Toggle light and dark mode
+        function toggleMode() {
+            document.body.classList.toggle("dark-mode");
+            let button = document.querySelector(".mode-toggle");
+
+            if (document.body.classList.contains("dark-mode")) {
+                button.textContent = "🌞";  // Change to Sun for light mode
+            } else {
+                button.textContent = "🌙";  // Change to Moon for dark mode
+            }
+        }
+    </script>
+</body>
+</html>
