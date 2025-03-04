@@ -26,9 +26,7 @@ public class WebcamController {
 
     @Autowired
     private ImageService imageService;
-
     private boolean isCapturing = false;
-
     private final VideoCapture camera = new VideoCapture(0);
 
     @Scheduled(fixedRate = 20000)
@@ -36,7 +34,6 @@ public class WebcamController {
         if (isCapturing) {
             Mat capturedImage = captureFromWebcam();
             byte[] imageData = matToByteArray(capturedImage);
-
             if (imageData.length > 0) {
                 imageService.saveImage(imageData);
             }
@@ -54,9 +51,7 @@ public class WebcamController {
     @PostMapping("/deleteAllImages")
     public String deleteAllImages(RedirectAttributes redirectAttributes) {
         imageService.deleteAllImages();
-
         redirectAttributes.addFlashAttribute("message", "All images have been deleted successfully!");
-
         return "redirect:/";
     }
 
@@ -84,7 +79,6 @@ public class WebcamController {
         List<String> base64Images = images.stream()
                 .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
                 .collect(Collectors.toList());
-
         model.addAttribute("imageDataList", base64Images);
         return "results";
     }
@@ -95,7 +89,6 @@ public class WebcamController {
         List<String> base64Images = images.stream()
                 .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
                 .collect(Collectors.toList());
-
         return ResponseEntity.ok(base64Images);
     }
 
@@ -104,15 +97,12 @@ public class WebcamController {
             System.out.println("Error: Webcam is not accessible.");
             return new Mat();
         }
-
         Mat frame = new Mat();
         boolean success = camera.read(frame);
-
         if (!success || frame.empty()) {
             System.out.println("Error: Failed to capture image.");
             return new Mat();
         }
-
         return frame;
     }
 
@@ -121,15 +111,12 @@ public class WebcamController {
             System.out.println("Error: Mat is empty.");
             return new byte[0];
         }
-
         MatOfByte matOfByte = new MatOfByte();
         boolean success = Imgcodecs.imencode(".png", mat, matOfByte);
-
         if (!success) {
             System.out.println("Error: Failed to encode image.");
             return new byte[0];
         }
-
         return matOfByte.toArray();
     }
 }
