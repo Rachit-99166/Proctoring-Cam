@@ -8,6 +8,5 @@ import com.example.webcamopencv.Entity.ImageEntity;
 @Repository
 public interface ImageRepository extends JpaRepository<ImageEntity, Long> {
 
-    // Optional<ImageEntity> findTopByOrderByIdDesc();
     ImageEntity findTopByOrderByIdDesc();
 }

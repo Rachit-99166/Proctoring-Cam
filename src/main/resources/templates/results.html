@@ -8,23 +8,17 @@
 </head>
 <body>
 
-    <!-- Container for results -->
     <div class="container mt-4">
         <h1 class="text-center text-secondary">All Captured Images</h1>
 
-        <!-- Display all images -->
         <div class="row">
-            <!-- Loop through all stored images and display them -->
             <div class="col-12 col-md-4" th:each="imageData : ${imageDataList}">
                 <img th:src="'data:image/png;base64,' + ${imageData}" class="img-fluid mb-3" alt="Captured Image">
             </div>
         </div>
 
-        <!-- Button section: Delete All Images and Back to Capture -->
         <div class="text-center mt-4">
-            <!-- <form action="/deleteAllImages" method="post" class="d-inline-block mr-3">
-                <button type="submit" class="btn btn-danger">Delete All Images</button>
-            </form> -->
+    
             <form action="/deleteAllImages" method="post" class="d-inline-block mr-3">
                 <button type="submit" class="btn btn-danger">Delete All Images</button>
             </form>

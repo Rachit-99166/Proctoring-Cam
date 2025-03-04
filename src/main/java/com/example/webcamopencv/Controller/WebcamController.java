@@ -29,9 +29,8 @@ public class WebcamController {
 
     private boolean isCapturing = false;
 
-    private final VideoCapture camera = new VideoCapture(0); // Keep the camera open
+    private final VideoCapture camera = new VideoCapture(0);
 
-    // Triggered every 20 seconds to capture an image
     @Scheduled(fixedRate = 20000)
     public void captureImagePeriodically() {
         if (isCapturing) {
@@ -39,87 +38,65 @@ public class WebcamController {
             byte[] imageData = matToByteArray(capturedImage);
 
             if (imageData.length > 0) {
-                imageService.saveImage(imageData);  // Save the image to MySQL
+                imageService.saveImage(imageData);
             }
         }
     }
 
     @GetMapping("/")
     public String index(Model model) {
-        // Get the latest image from the database
         byte[] latestImage = imageService.getLatestImage();
-
-        // Convert byte[] to Base64 for displaying in HTML
         String base64Image = Base64.getEncoder().encodeToString(latestImage);
-
-        // Add the latest image to the model
-        model.addAttribute("imageData", base64Image);  // Pass the base64 image to Thymeleaf
-        return "index";  // Return the view
+        model.addAttribute("imageData", base64Image);
+        return "index";
     }
 
-    // @PostMapping("/deleteAllImages")
-    // @ResponseBody
-    // public String deleteAllImages() {
-    //     imageService.deleteAllImages();  // Call the service method to delete images
-    //     return "redirect:/results";  // Redirect to the results page after deletion
-    // }
     @PostMapping("/deleteAllImages")
     public String deleteAllImages(RedirectAttributes redirectAttributes) {
-        // Call your service to delete all images from the database
         imageService.deleteAllImages();
 
-        // Add a success message (optional) to show after redirection
         redirectAttributes.addFlashAttribute("message", "All images have been deleted successfully!");
 
-        // Redirect to the index (or homepage) after deletion
         return "redirect:/";
     }
 
     @RequestMapping("/")
     public String index() {
-        // Return the view for the index page (e.g., "index.html")
         return "index";
     }
 
     @PostMapping("/capture")
     public String captureImage(Model model) {
-        isCapturing = true;  // Start capturing images
+        isCapturing = true;
         return "redirect:/";
     }
 
     @PostMapping("/stop")
     public String stopCapture(Model model) {
-        isCapturing = false;  // Stop capturing images
-        camera.release();  // Release the webcam to stop capturing
+        isCapturing = false;
+        camera.release();
         return "redirect:/";
     }
 
     @RequestMapping("/results")
     public String resultsPage(Model model) {
-        // Get all images from the database
         List<ImageEntity> images = imageService.getAllImages();
-
-        // Convert byte[] to Base64 strings for displaying
         List<String> base64Images = images.stream()
                 .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
                 .collect(Collectors.toList());
 
-        // Add the list of images to the model to be displayed on the results page
         model.addAttribute("imageDataList", base64Images);
-        return "results";  // Return the results page
+        return "results";
     }
 
     @RequestMapping("/api/images")
     public ResponseEntity<List<String>> getAllImages() {
-        // Get all images from the DB (in byte[] format)
         List<ImageEntity> images = imageService.getAllImages();
-
-        // Convert byte[] to Base64 strings for API response
         List<String> base64Images = images.stream()
                 .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
                 .collect(Collectors.toList());
 
-        return ResponseEntity.ok(base64Images);  // Return the list of base64 images as JSON
+        return ResponseEntity.ok(base64Images);
     }
 
     private Mat captureFromWebcam() {
@@ -136,7 +113,7 @@ public class WebcamController {
             return new Mat();
         }
 
-        return frame; // Return the captured frame (image)
+        return frame;
     }
 
     private byte[] matToByteArray(Mat mat) {
@@ -153,6 +130,6 @@ public class WebcamController {
             return new byte[0];
         }
 
-        return matOfByte.toArray();  // Return the encoded byte array
+        return matOfByte.toArray();
     }
 }

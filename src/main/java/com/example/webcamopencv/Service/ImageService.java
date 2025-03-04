@@ -16,28 +16,24 @@ public class ImageService {
 
     public void saveImage(byte[] imageData) {
         ImageEntity imageEntity = new ImageEntity();
-        imageEntity.setImageData(imageData);  // Set image data
-        imageRepository.save(imageEntity);  // Save to DB
+        imageEntity.setImageData(imageData);
+        imageRepository.save(imageEntity);
     }
 
     public List<ImageEntity> getAllImages() {
-        return imageRepository.findAll();  // Retrieve all images from the database
+        return imageRepository.findAll();
     }
 
-    // public byte[] getLatestImage() {
-    //     return imageRepository.findTopByOrderByIdDesc().getImageData();  // Retrieve the latest image from the database
-    // }
     public byte[] getLatestImage() {
         ImageEntity latestImage = imageRepository.findTopByOrderByIdDesc();
         if (latestImage == null) {
-            // Return an empty byte array or a default image if no image exists
             return new byte[0];
         }
-        return latestImage.getImageData();  // Return the image data
+        return latestImage.getImageData();
     }
 
     public void deleteAllImages() {
-        imageRepository.deleteAll();  // Deletes all entries in the Image table
+        imageRepository.deleteAll();
     }
 
 }
