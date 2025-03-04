@@ -9,7 +9,6 @@ import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.videoio.VideoCapture;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -61,13 +60,13 @@ public class WebcamController {
     }
 
     @PostMapping("/capture")
-    public String captureImage(Model model) {
+    public String captureImage() {
         isCapturing = true;
         return "redirect:/";
     }
 
     @PostMapping("/stop")
-    public String stopCapture(Model model) {
+    public String stopCapture() {
         isCapturing = false;
         camera.release();
         return "redirect:/";
@@ -81,15 +80,6 @@ public class WebcamController {
                 .collect(Collectors.toList());
         model.addAttribute("imageDataList", base64Images);
         return "results";
-    }
-
-    @RequestMapping("/api/images")
-    public ResponseEntity<List<String>> getAllImages() {
-        List<ImageEntity> images = imageService.getAllImages();
-        List<String> base64Images = images.stream()
-                .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(base64Images);
     }
 
     private Mat captureFromWebcam() {
