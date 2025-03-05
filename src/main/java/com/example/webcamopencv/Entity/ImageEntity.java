@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ImageEntity {
+public class ImageEntity { 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
