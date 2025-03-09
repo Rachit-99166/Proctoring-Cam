@@ -43,7 +43,7 @@ public class WebcamController {
     public String index(Model model) {
         byte[] latestImage = imageService.getLatestImage();
         String base64Image = Base64.getEncoder().encodeToString(latestImage);
-        model.addAttribute("imageData", base64Image);
+        model.addAttribute("imageData", base64Image); 
         return "index";
     }
 
