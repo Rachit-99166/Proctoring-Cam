@@ -95,7 +95,7 @@ public class WebcamController {
         }
         return frame;
     }
-
+ 
     private byte[] matToByteArray(Mat mat) {
         if (mat.empty()) {
             System.out.println("Error: Mat is empty.");
