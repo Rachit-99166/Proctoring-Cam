@@ -60,7 +60,7 @@ public class WebcamController {
     }
 
     @PostMapping("/capture")
-    public String captureImage() {
+    public String captureImage() { 
         isCapturing = true;
         return "redirect:/";
     }
