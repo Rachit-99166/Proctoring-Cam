@@ -10,4 +10,4 @@ class WebcamOpenCvApplicationTests {
 	void contextLoads() {
 	}
 
-}
+} 
