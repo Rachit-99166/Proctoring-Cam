@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.example.webcamopencv.Entity.ImageEntity;
-import com.example.webcamopencv.Service.ImageService;
+import com.example.webcamopencv.Service.ImageService; 
 
 @Controller
 public class WebcamController {
