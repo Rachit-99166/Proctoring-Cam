@@ -78,7 +78,7 @@ public class WebcamController {
         List<String> base64Images = images.stream()
                 .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
                 .collect(Collectors.toList());
-        model.addAttribute("imageDataList", base64Images);
+        model.addAttribute("imageDataList", base64Images); 
         return "results";
     }
 
