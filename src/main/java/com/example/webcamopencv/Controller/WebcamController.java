@@ -21,7 +21,7 @@ import com.example.webcamopencv.Entity.ImageEntity;
 import com.example.webcamopencv.Service.ImageService; 
 
 @Controller
-public class WebcamController {
+public class WebcamController { 
 
     @Autowired
     private ImageService imageService;
