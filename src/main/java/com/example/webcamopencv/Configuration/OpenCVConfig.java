@@ -1,6 +1,6 @@
 package com.example.webcamopencv.Configuration;
 
-import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Configuration; 
  
 import jakarta.annotation.PostConstruct;
 
