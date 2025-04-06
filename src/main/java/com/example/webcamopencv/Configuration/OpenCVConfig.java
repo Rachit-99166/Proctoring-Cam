@@ -5,7 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import jakarta.annotation.PostConstruct;
 
 @Configuration
-public class OpenCVConfig {
+public class OpenCVConfig { 
 
     @PostConstruct
     public void init() {
