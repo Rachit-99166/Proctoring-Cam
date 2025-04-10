@@ -6,7 +6,7 @@ import jakarta.annotation.PostConstruct;
  
 @Configuration 
 public class OpenCVConfig { 
-
+ 
     @PostConstruct
     public void init() { 
         System.setProperty("java.library.path", "D:\\OpenCv\\opencv\\build\\java\\x64");
