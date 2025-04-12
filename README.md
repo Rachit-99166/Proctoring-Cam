@@ -8,7 +8,7 @@ The Proctoring Cam project is designed to enhance online exam monitoring by capt
 
 # Features 
 
-Automated Image Capture – Captures images of the user every 20 seconds for real-time exam monitoring. 
+Automated Image Capture – Captures images of the user every 20 seconds for real-time exam monitoring.  
 
 Secure Storage – Stores captured images in an SQL database for easy access and review.
 
