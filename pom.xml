@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>webcam-opencv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>WebcamOpenCV</name> 
+	<name>WebcamOpenCV</name>  
 	<description>Demo project for Spring Boot</description>
 	<url/> 
 	<licenses>
