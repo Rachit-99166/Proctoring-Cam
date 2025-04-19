@@ -4,7 +4,7 @@ import java.util.Base64;
 import java.util.List;
 import java.util.stream.Collectors; 
  
-import org.opencv.core.Mat;
+import org.opencv.core.Mat; 
 import org.opencv.core.MatOfByte;
 import org.opencv.imgcodecs.Imgcodecs; 
 import org.opencv.videoio.VideoCapture;
