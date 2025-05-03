@@ -11,7 +11,7 @@ public class OpenCVConfig {
     public void init() {   
         System.setProperty("java.library.path", "D:\\OpenCv\\opencv\\build\\java\\x64");  
         System.load("D:\\OpenCv\\opencv\\build\\java\\x64\\opencv_java4100.dll"); 
-
+ 
     } 
 
 }
