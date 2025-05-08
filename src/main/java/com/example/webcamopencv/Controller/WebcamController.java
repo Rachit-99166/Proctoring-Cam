@@ -65,7 +65,7 @@ public class WebcamController {
         return "redirect:/";
     }
 
-    @PostMapping("/stop")
+    @PostMapping("/stop") 
     public String stopCapture() {
         isCapturing = false;
         camera.release();
