@@ -5,7 +5,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class WebcamOpenCvApplicationTests {
-
+ 
 	@Test
 	void contextLoads() {
 	}
