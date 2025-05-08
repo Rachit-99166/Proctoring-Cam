@@ -74,7 +74,7 @@ public class WebcamController {
 
     @RequestMapping("/results")
     public String resultsPage(Model model) {
-        List<ImageEntity> images = imageService.getAllImages();
+        List<ImageEntity> images = imageService.getAllImages(); 
         List<String> base64Images = images.stream()
                 .map(imageEntity -> Base64.getEncoder().encodeToString(imageEntity.getImageData()))
                 .collect(Collectors.toList());
