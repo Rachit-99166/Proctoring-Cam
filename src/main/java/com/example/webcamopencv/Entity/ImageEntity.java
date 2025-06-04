@@ -21,7 +21,7 @@ public class ImageEntity {
     @Lob
     private byte[] imageData; 
 
-    public byte[] getImageData() {
+    public byte[] getImageData() { 
         return imageData;
     }
 
