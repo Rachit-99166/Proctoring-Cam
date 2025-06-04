@@ -19,7 +19,7 @@ public class ImageEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Lob
-    private byte[] imageData;
+    private byte[] imageData; 
 
     public byte[] getImageData() {
         return imageData;
