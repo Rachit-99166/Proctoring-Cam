@@ -36,7 +36,7 @@ public class WebcamController {
             if (imageData.length > 0) {
                 imageService.saveImage(imageData);
             }
-        }
+        } 
     }
 
     @GetMapping("/")
