@@ -11,3 +11,4 @@ public interface ImageRepository extends JpaRepository<ImageEntity, Long> {
     ImageEntity findTopByOrderByIdDesc(); 
 }   
  
+ 
