@@ -12,7 +12,7 @@ import com.example.webcamopencv.Repository.ImageRepository;
 public class ImageService {  
 
     @Autowired  
-    private ImageRepository imageRepository;
+    private ImageRepository imageRepository; 
   
     public void saveImage(byte[] imageData) {
         ImageEntity imageEntity = new ImageEntity();  
