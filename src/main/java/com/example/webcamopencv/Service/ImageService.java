@@ -20,7 +20,7 @@ public class ImageService {
         imageRepository.save(imageEntity);
     }
 
-    public List<ImageEntity> getAllImages() {
+    public List<ImageEntity> getAllImages() { 
         return imageRepository.findAll();
     }
 
