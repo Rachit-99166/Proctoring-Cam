@@ -15,7 +15,7 @@ public class ImageService {
     private ImageRepository imageRepository;
   
     public void saveImage(byte[] imageData) {
-        ImageEntity imageEntity = new ImageEntity(); 
+        ImageEntity imageEntity = new ImageEntity();  
         imageEntity.setImageData(imageData);
         imageRepository.save(imageEntity);
     }
