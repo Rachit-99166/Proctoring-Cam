@@ -9,7 +9,7 @@ import com.example.webcamopencv.Entity.ImageEntity;
 import com.example.webcamopencv.Repository.ImageRepository;
 
 @Service
-public class ImageService { 
+public class ImageService {  
 
     @Autowired 
     private ImageRepository imageRepository;
