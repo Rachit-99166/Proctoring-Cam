@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.webcamopencv.Entity.ImageEntity;
 import com.example.webcamopencv.Repository.ImageRepository;
-
+ 
 @Service
 public class ImageService {  
 
